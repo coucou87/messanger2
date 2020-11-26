@@ -34,6 +34,7 @@ const Image = styled.img`
 `
 const Information = styled.div`
     display:flex;
+   
     flex-flow: column;
     padding-top: 0px; 
     margin-left:20px;
@@ -64,6 +65,7 @@ const Info = styled.span`
     padding-top: 0px; 
     margin-left:20px;
     text-align:center;
+    
  
 `
 

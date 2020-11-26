@@ -8,25 +8,25 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
     display:flex;
     justify-content:center;
-    position: relative;
+    position: absolute;
+    right:0;
     width: calc(100% - 500px);
-    display: flex;
+    overflow-y:hidden;
     flex-direction: column;
     justify-content: center;
-    height: 100%;
+    height: calc(100% - 40px);
   
 `
-export default function ChatComponent (){
-
+export default function ChatComponent ({onAvatar, textHandler, onCall}){
+   
 
     return(
         <>
         <Wrapper>
-           <ChatHeader /> 
-           <ChatBody />
+           <ChatHeader avatar={onAvatar} text={textHandler}/> 
+           <ChatBody ss={ onCall()}/>
            <ChatFooter />
-        </Wrapper>
-            
+        </Wrapper>  
         </>
     )
 }

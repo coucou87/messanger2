@@ -5,7 +5,7 @@ import { FiPaperclip } from 'react-icons/fi';
 const Wrapper = styled.div`
   display:flex;
   justify-content:space-around;
-  height: 60px;
+  height: 100px;
   background-color: #ededed;
   align-items:center;
 `

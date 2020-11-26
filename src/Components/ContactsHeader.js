@@ -1,4 +1,4 @@
-import React, { useState,useRef,useEffect,forwardRef } from 'react'
+import React, { useState,useRef,useEffect } from 'react'
 import styled from 'styled-components'
 import { FaSearch } from 'react-icons/fa';
 import { BiMenu } from 'react-icons/bi';
@@ -28,9 +28,17 @@ const Icon3= styled.span`
     margin-left:20px;
     color:#008B8B;
     font-size:1.3em;
+    font-weight:bold;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 `
 
 const Input= styled.input`
+    
+   
+   display:block;
+    align-items:center;
     background-color:#ededed;
     border:none ;
     outline:none;
@@ -40,6 +48,7 @@ const Input= styled.input`
 
 export default function ContactsHeader (){
     const [show,setShow] = useState(false)
+    
 
     function handleClick(){
         setShow(!show)
@@ -49,7 +58,7 @@ export default function ContactsHeader (){
         <Wrapper>
     {!show && <Icon2><BiMenu/></Icon2>} {show && <Icon3><BiArrowBack/></Icon3> }
     {!show && <Label>Messager Génial</Label>}
-    {show && <Input ></Input>}
+    {show && <Input type="text"></Input>}
     {!show && <Icon1 onClick={handleClick}><FaSearch/></Icon1>}
         </Wrapper>
     )

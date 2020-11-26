@@ -13,12 +13,18 @@ const Wrapper = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   transition: all 0.2s ease;
-  overflow: hidden;
-   
+  overflow-y: hidden; 
 `
-export default function ChatBody(){
+
+const Message = styled.p`
+
+
+`
+export default function ChatBody({ss}){
 
     return(
-        <Wrapper>hiiii</Wrapper>
+        <Wrapper>
+           <Message>{ss}</Message>
+        </Wrapper>
     )
  }

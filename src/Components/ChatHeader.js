@@ -7,15 +7,17 @@ const Wrapper = styled.div`
   background-color:#ededed ;
   display:flex;
   /* width: calc(100% - 500px); */
-  height:60px;
+  height:100px;
   justify-content:space-around;
   align-items:center;
 `
 const Name = styled.h3`   
 `
-const Photo = styled.span`
+const Photo = styled.img`
   width:50px;
   height:50px;   
+  padding-right:20px;
+  border-radius:50%;
 `
 const MoreIcon = styled.span`
   color:#008B8B;
@@ -28,7 +30,10 @@ const CloseIcon = styled.span`
   font-weight:bold;
 `
 const InfoWrapper = styled.div`
-  display: block;
+  align-items:center;
+  display:flex;
+  flex-flow: row;
+  
 `
 
 export default function ChatHeader ({text, avatar}){
@@ -38,7 +43,7 @@ export default function ChatHeader ({text, avatar}){
       <Wrapper>
         <CloseIcon><RiCloseLine/></CloseIcon>
           <InfoWrapper>
-            <Photo>{avatar}</Photo>
+            <Photo src={avatar}/>
             <Name>{text}</Name>
           </InfoWrapper>
         <MoreIcon><IoMdMore/></MoreIcon>
