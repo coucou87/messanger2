@@ -7,6 +7,7 @@ const Wrapper = styled.div`
     height:40px;
     margin-bottom:0;
 `
+
 export default function Navigation(){
     return(
         <Wrapper/>

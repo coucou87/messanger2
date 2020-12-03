@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components'
-import { RiCloseLine } from 'react-icons/ri';
+import { RiCloseLine } from 'react-icons/ri'; 
 import { IoMdMore } from 'react-icons/io';
 
 const Wrapper = styled.div`
@@ -33,30 +33,20 @@ const InfoWrapper = styled.div`
   align-items:center;
   display:flex;
   flex-flow: row;
+  
 `
-export default function ChatHeader(
-  {
-    text,
-    avatar,
-    deleteHandler
-  }
-) {
 
-  return (
+export default function ChatHeader ({text, avatar}){
+ 
+  return(
     <>
       <Wrapper>
-        <CloseIcon>
-          <RiCloseLine
-            onClick={deleteHandler}
-          />
-        </CloseIcon>
-        <InfoWrapper>
-          <Photo src={avatar} />
-          <Name>{text}</Name>
-        </InfoWrapper>
-        <MoreIcon>
-          <IoMdMore />
-        </MoreIcon>
+        <CloseIcon><RiCloseLine/></CloseIcon>
+          <InfoWrapper>
+            <Photo src={avatar}/>
+            <Name>{text}</Name>
+          </InfoWrapper>
+        <MoreIcon><IoMdMore/></MoreIcon>
       </Wrapper>
     </>
   )

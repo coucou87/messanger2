@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components'
 import Message from './Message'
 
@@ -16,12 +16,10 @@ const Wrapper = styled.div`
   padding-left:20px;
   overflow-x: hidden; 
   overflow-y: auto; 
-  color:${props => (props.isMine) ? "blue" : "red"};
-  align-self: ${props => (props.isMine) ? "flex-end" : "flex-start"};
+  align-items: ${props => props.isOpenent ? "flex-end" : "flex-start"};
 `
 
 export default function ChatBody({ text }) {
-
   return (
     <Wrapper >
       {text.map(
@@ -31,8 +29,8 @@ export default function ChatBody({ text }) {
             id={item.id}
             txtMessage={item.message}
             messageTime={item.time}
-            isMine={item.isMine}
-          />
+            isOpenent={item.isOpenent}
+          /> 
       )}
     </Wrapper>
   )

@@ -23,6 +23,7 @@ const Icon2 = styled.span`
     color:#008B8B;
     font-size:1.5em;
 `
+
 const Icon3 = styled.span`
     margin-left:20px;
     color:#008B8B;
@@ -32,14 +33,21 @@ const Icon3 = styled.span`
     justify-content:center;
     align-items:center;
 `
+
 const Input = styled.input`
+    
+   
+   display:block;
+    align-items:center;
     background-color:#ededed;
     border:none ;
     outline:none;
+  
+
 `
+
 export default function ContactsHeader() {
     const [show, setShow] = useState(false)
-    const [value, setValue] = useState('')
     const inputRef = useRef()
 
     useEffect(() => {
@@ -52,41 +60,12 @@ export default function ContactsHeader() {
         setShow(!show)
     }
 
-
     return (
-        <Wrapper >
-            {!show &&
-                <Icon2>
-                    <BiMenu />
-                </Icon2>
-            }
-            {show &&
-                <Icon3>
-                    <BiArrowBack
-                        onClick={handleClick}
-                    />
-                </Icon3>
-            }
-            {!show &&
-                <Label>
-                    Messager Génial
-                 </Label>
-            }
-            {show &&
-                <Input
-                    ref={inputRef}
-                    type="text"
-                    placeholder="Search Contact..."
-                    value={value}
-                    onChange={(e) => setValue(e.target.value)}
-                >
-                </Input>}
-            {!show &&
-                <Icon1
-                    onClick={handleClick}
-                >
-                    <FaSearch />
-                </Icon1>}
+        <Wrapper>
+            {!show && <Icon2><BiMenu /></Icon2>} {show && <Icon3><BiArrowBack /></Icon3>}
+            {!show && <Label>Messager Génial</Label>}
+            {show && <Input ref={inputRef} type="text"></Input>}
+            {!show && <Icon1 onClick={handleClick}><FaSearch /></Icon1>}
         </Wrapper>
     )
 }

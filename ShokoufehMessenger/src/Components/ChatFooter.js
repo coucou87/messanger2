@@ -13,6 +13,7 @@ const Clips = styled.span`
   color:#008B8B;
   font-size:1.3em;
 `
+
 const Input = styled.input`
    border-radius:9px;
    height:30px;
@@ -20,10 +21,20 @@ const Input = styled.input`
    border:none;
    outline:none;
    background-color:white;
+
 `
 export default function ChatFooter({ onKey }) {
    const inputRef = useRef(null)
    const [msg, setMsg] = useState('')
+   // const [chats, setchats] = useState({
+   //    message:"message",
+   //    id:"id",
+   //    time:"time",
+   //    isOpenent: "false",
+   //    unreadMsg: "",
+   //    reply:{}
+   // })
+  
 
    useEffect(() => {
       inputRef.current.focus()
@@ -33,22 +44,25 @@ export default function ChatFooter({ onKey }) {
       setMsg(e.target.value)
    }
 
-   function handlekey(e) {
-      if (e.key === 'Enter') {
+   // function jafar(id) {
+   //    Const user = alluser.find(item => item.id === id)
+   //    setState({
+   //       name: user.name,
+   //       lname: user.lname,
+   //       age: user.age
+   //    })
+   //    {
+
+   function handlekey(e){
+      if(e.key === 'Enter')
          onKey(msg)
-         setMsg('')
-      }
    }
+
+
 
    return (
       <Wrapper >
-         <Input
-            ref={inputRef}
-            value={msg}
-            onChange={handleChange}
-            type="text"
-            placeholder=" Type a message..."
-            onKeyPress={handlekey}></Input>
+         <Input ref={inputRef} value={msg} onChange={handleChange} type="text" placeholder=" Type a message..."  onKeyPress={handlekey}></Input>
          <Clips><FiPaperclip /></Clips>
       </Wrapper>
    )

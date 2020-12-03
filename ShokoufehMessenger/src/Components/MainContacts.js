@@ -1,7 +1,9 @@
 import React from 'react'
 import ContactsHeader from './ContactsHeader'
 import Contacts from './Contacts'
+// import PreChatHeader from './PreChatHeader'
 import styled from 'styled-components'
+
 
 const Wrapper = styled.div`
    border-right: 2px solid #ccc;
@@ -13,32 +15,29 @@ const Wrapper = styled.div`
     height: calc(100% - 40px);
     overflow-y: hidden;
     overflow-x: hidden;
-    @media (max-width: 768px) {
-      width: 350px;
-  }
 `
+
 export default function MainContacts({ items, clickHandler }) {
+  
   return (
     <>
-      <Wrapper>
-        <ContactsHeader />
+    <Wrapper>
+       <ContactsHeader />
         {items.map(item => {
           const chats = [...item.chats]
           return (
-            <Contacts
-              haveRead={item.haveRead}
-              isUnread={chats[chats.length - 1].isUnread}
-              key={item.id}
-              text={item.name}
-              avatar={item.avatar}
-              lastMsgTime={chats[chats.length - 1].time}
-              lastText={chats[chats.length - 1].message}
-              unreadMsg={chats[chats.length - 1].unreadMsg}
-              onClick={() => clickHandler(item.id)}
+            <Contacts 
+              key={item.id} 
+              text={item.name} 
+              avatar={item.avatar} 
+              lastMsgTime={chats[chats.length-1].time}
+              lastText={chats[chats.length-1].message} 
+              unreadMsg={chats[chats.length-1].unreadMsg}
+              onClick={()=>clickHandler(item.id)}  
             />
           )
         })}
-      </Wrapper>
+    </Wrapper>
     </>
   )
 }
