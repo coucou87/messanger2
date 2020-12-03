@@ -95,7 +95,6 @@ export default function App() {
      }
     )
   }
-
   function handlerDelete(){
     setShowChatComponent(false) 
   }
