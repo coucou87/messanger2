@@ -28,7 +28,6 @@ export default function ChatComponent(
         deleteHandler }
 ) {
     return (
-        <>
             <Wrapper>
                 <ChatHeader
                     avatar={AvatarHandler}
@@ -43,6 +42,5 @@ export default function ChatComponent(
                     onKey={handleKey}
                 />
             </Wrapper>
-        </>
     )
 }

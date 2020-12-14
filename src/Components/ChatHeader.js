@@ -43,21 +43,19 @@ export default function ChatHeader(
 ) {
 
   return (
-    <>
-      <Wrapper>
-        <CloseIcon>
-          <RiCloseLine
-            onClick={deleteHandler}
-          />
-        </CloseIcon>
-        <InfoWrapper>
-          <Photo src={avatar} />
-          <Name>{text}</Name>
-        </InfoWrapper>
-        <MoreIcon>
-          <IoMdMore />
-        </MoreIcon>
-      </Wrapper>
-    </>
+    <Wrapper>
+      <CloseIcon>
+        <RiCloseLine
+          onClick={deleteHandler}
+        />
+      </CloseIcon>
+      <InfoWrapper>
+        <Photo src={avatar} />
+        <Name>{text}</Name>
+      </InfoWrapper>
+      <MoreIcon>
+        <IoMdMore />
+      </MoreIcon>
+    </Wrapper>
   )
 }

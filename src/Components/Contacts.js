@@ -77,30 +77,27 @@ export default function Contacts(
     unreadMsg,
     onClick,
     haveRead }
-) 
-{
+) {
   return (
-    <>
-      <Wrapper
-        onClick={onClick}
-      >
-        <Image
-          src={avatar}
-        />
-        <MinWrapper>
-          <Information>
-            <Name>{text}</Name>
-            <LastText>{lastText}</LastText>
-          </Information>
-          <Info>
-            <Time>{lastMsgTime}</Time>
-            {!haveRead &&
-              <UnreadMessage>
-                {unreadMsg}
-              </UnreadMessage>}
-          </Info>
-        </MinWrapper>
-      </Wrapper>
-    </>
+    <Wrapper
+      onClick={onClick}
+    >
+      <Image
+        src={avatar}
+      />
+      <MinWrapper>
+        <Information>
+          <Name>{text}</Name>
+          <LastText>{lastText}</LastText>
+        </Information>
+        <Info>
+          <Time>{lastMsgTime}</Time>
+          {!haveRead &&
+            <UnreadMessage>
+              {unreadMsg}
+            </UnreadMessage>}
+        </Info>
+      </MinWrapper>
+    </Wrapper>
   )
 }

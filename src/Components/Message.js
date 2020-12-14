@@ -39,6 +39,5 @@ export default function Message({ messageTime, txtMessage, isMine }) {
                 {messageTime}
             </TimeLabel>
         </Wrapper>
-
     )
 }
