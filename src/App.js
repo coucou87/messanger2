@@ -2,7 +2,7 @@ import MainContacts from './Components/MainContacts'
 import Navigation from './Components/Navigation'
 import ChatComponent from './Components/ChatComponent'
 import styled from 'styled-components'
-import { useReducer, useEffect, useState} from 'react'
+import { useReducer, useEffect} from 'react'
 import {reducer} from './Components/reducer'
 
 const Wrapper = styled.div`
@@ -11,46 +11,53 @@ const Wrapper = styled.div`
   overflow-x:hidden;
 `
 export default function App() {
-  const [items, setItems] = useState([
-    {
-      name: "Édith", id: 0, avatar: '/DATA/IMAGES/avatar.png', haveRead: false,
-      chats:
-        [
-          { id: 1, message: 'salut', time: '06:34', isMine: false, reply: {}, unreadMsg: '10' },
-          { id: 2, message: 'comment ca va?', time: '06:35', isMine: false, reply: {}, unreadMsg: '10' },
-          { id: 3, message: 'tu vien au cinéma?', time: '06:36', isMine: false, reply: {}, unreadMsg: '10' }
-        ]
-    },
-    {
-      name: "Zaaz ", id: 2, avatar: '/DATA/IMAGES/avatar.png', haveRead: false,
-      chats:
-        [
-          { id: 1, message: 'au revoir', time: '04:25', isMine: false, reply: {}, unreadMsg: '10' }
-        ]
-    },
+  // const [items, setItems] = useState()
+  // const [showChatComponent, setShowChatComponent] = useState(false)
+  // const [userInfo, setUserInfo] = useState({})
+  // const [userChat, setUserChat] = useState({}) 
 
-    {
-      name: "Dalida", id: 3, avatar: '/DATA/IMAGES/avatar.png', haveRead: false,
-      chats:
-        [
-          { id: 1, message: 'un peu plus tard', time: '06:34', isMine: false, reply: {}, unreadMsg: '10' },
-          { id: 2, message: 'daccord', time: '10:35', isMine: true, reply: {}, unreadMsg: '10' }
-
-        ]
-    },
-    {
-      name: "Céline", id: 4, avatar: '/DATA/IMAGES/avatar.png', haveRead: false,
-      chats:
-        [
-          { id: 1, message: 'salut', time: '06:34', isMine: true, reply: {}, unreadMsg: '10' },
-          { id: 2, message: 'comment ca va?', time: '06:35', isMine: true, reply: {}, unreadMsg: '10' },
-          { id: 3, message: 'Coucou Shokoufé', time: '11:11', isMine: false, reply: {}, unreadMsg: '10' }
-        ]
-    }
-  ],)
-  const [showChatComponent, setShowChatComponent] = useState(false)
-  const [userInfo, setUserInfo] = useState({})
-  const [userChat, setUserChat] = useState({}) 
+  const [{ items, showChatComponent, userInfo, userChat }, dispatch] = useReducer(reducer, {
+    items: [
+      {
+        name: "Édith", id: 0, avatar: '/DATA/IMAGES/avatar.png', haveRead: false,
+        chats:
+          [
+            { id: 1, message: 'salut', time: '06:34', isMine: false, reply: {}, unreadMsg: '10' },
+            { id: 2, message: 'comment ca va?', time: '06:35', isMine: false, reply: {}, unreadMsg: '10' },
+            { id: 3, message: 'tu vien au cinéma?', time: '06:36', isMine: false, reply: {}, unreadMsg: '10' }
+          ]
+      },
+      {
+        name: "Zaaz ", id: 2, avatar: '/DATA/IMAGES/avatar.png', haveRead: false,
+        chats:
+          [
+            { id: 1, message: 'au revoir', time: '04:25', isMine: false, reply: {}, unreadMsg: '10' }
+          ]
+      },
+  
+      {
+        name: "Dalida", id: 3, avatar: '/DATA/IMAGES/avatar.png', haveRead: false,
+        chats:
+          [
+            { id: 1, message: 'un peu plus tard', time: '06:34', isMine: false, reply: {}, unreadMsg: '10' },
+            { id: 2, message: 'daccord', time: '10:35', isMine: true, reply: {}, unreadMsg: '10' }
+  
+          ]
+      },
+      {
+        name: "Céline", id: 4, avatar: '/DATA/IMAGES/avatar.png', haveRead: false,
+        chats:
+          [
+            { id: 1, message: 'salut', time: '06:34', isMine: true, reply: {}, unreadMsg: '10' },
+            { id: 2, message: 'comment ca va?', time: '06:35', isMine: true, reply: {}, unreadMsg: '10' },
+            { id: 3, message: 'Coucou Shokoufé', time: '11:11', isMine: false, reply: {}, unreadMsg: '10' }
+          ]
+      }
+    ], 
+    showChatComponent: false,
+    userInfo: {},
+    userChat: {},
+  })
 
   useEffect(() => {
     if (Object.getOwnPropertyNames(userChat).length > 0) {
@@ -62,10 +69,20 @@ export default function App() {
       copyUserInfo.chats = copyUserInfoChat
       userChat.isMine = true
       copyItems[itemIndex] = copyUserInfo
-       setUserInfo(copyUserInfo)
-       setItems(copyItems)
-       setUserChat({})
-     
+      //  setUserInfo(copyUserInfo)
+      //  setItems(copyItems)
+      //  setUserChat({})
+      dispatch({
+        type: 'CONTACT_INFORMATION',
+        payload: copyUserInfo
+      },
+        {
+          type: 'MY_MESSAGE',
+          payload: copyItems
+        },
+        {
+          type: 'CONTACT_MESSAGE'
+        })
     }
   
   }, [userChat, userInfo, items])
