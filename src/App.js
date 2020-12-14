@@ -61,13 +61,13 @@ export default function App() {
      const copyUserInfoChat = [...userInfo.chats]
      copyUserInfoChat.push(userChat)
      copyUserInfo.chats = copyUserInfoChat
-     userChat.isMine=true
+     userChat.isMine = true
      copyItems[itemIndex] = copyUserInfo
      setUserInfo(copyUserInfo)
      setItems(copyItems)
      setUserChat({})
     }
-   }, [userChat])
+   }, [userChat, userInfo, items])
 
   function handlerFindContact(id) {
     const itemsCopy = [...items]
